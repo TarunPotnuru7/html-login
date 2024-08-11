@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+      <form class="" action="index.html" method="post" name="submit-to-google-sheet">
+        <h1>Login</h1>
+        <div class="input-box">
+          <input type="text" placeholder="Username" required>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Password" required>
+          <i class='bx bxs-lock-alt' ></i>
+        </div>
+        <div class="remember-forget">
+          <label><input type="checkbox">Remember me</label>
+          <a href="#">Forget Password?</a>
+        </div>
+        <button type="submit" class="btn" name="button">Login</button>
+        <div class="register-link">
+          <p>Don't have an account? <a href="#">Register</a></p>
+        </div>
+      </form>
+    </div>
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxjujjAS4KstsUyhI2RPgCDI_0OKckyDtDjh0yQkS48ZA_4JGupHaAxcFzINk6eUZ6OgA/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+  </body>
+</html>
